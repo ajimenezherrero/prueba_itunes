@@ -1,0 +1,29 @@
+*, *::before, *:before, *::after, *:after {
+  box-sizing: border-box;
+}
+
+header {
+  background: #1976D2;
+}
+
+nav {
+  background: #2196F3;
+}
+
+footer {
+  background: #1976D2;
+}
+
+.flex-container {
+  display: -webkit-flex;
+  display: flex;
+  -webkit-flex-flow: row wrap;
+  flex-flow: row wrap;
+  text-align: center;
+}
+
+.flex-container > * {
+  padding: 15px;
+  -webkit-flex: 1 100%;
+  flex: 1 100%;
+}
