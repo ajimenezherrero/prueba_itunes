@@ -55,7 +55,7 @@ function createLiResults(result, iterPosition){
 /////////////////////////////////
 function removeAllChildsById(id){
     var element = document.getElementById(id);
-
+    results = [];
     while (element.hasChildNodes()) {
         element.removeChild(element.firstChild);
     }
@@ -75,32 +75,28 @@ function submitForm(evt){
     request.open("GET", uriRequest, true);
 
     request.onreadystatechange = function () {
-        if (request.readyState == 4 && request.status == 200) {
+        if (request.readyState != 4) return;
+        var titlePage = document.getElementById("titlePage");
+        if(request.status != 200) {
+            titlePage.innerHTML = "Server error";
+        }else {
             var response = JSON.parse(request.response),
                 listSongs = document.getElementById("listSongs"),
-                titlePage = document.getElementById("titlePage");
+                resultCount = response.resultCount;
 
-            results = [];
-            removeAllChildsById("listSongs");
+            if(listSongs.hasChildNodes()) removeAllChildsById("listSongs");
 
-            if(response.results === undefined){
-                titlePage.innerHTML = "Incorrect search parameters"
+            results = response.results;
+            if (resultCount == 0){
+                titlePage.innerHTML = "No results found for " + valueSearch;
             } else {
-                results = response.results;
-                if (results.length == 0){
-                    titlePage.innerHTML = "No results found for " + valueSearch;
-                } else {
-                    titlePage.innerHTML = "Results for " + valueSearch;
-                    for (var iterRes = 0; iterRes < results.length; iterRes++) {
-                        listSongs.appendChild(createLiResults(results[iterRes], iterRes));
-                    }
-
+                titlePage.innerHTML = "Results for " + valueSearch;
+                for (var iterRes = 0; iterRes < resultCount; iterRes++) {
+                    listSongs.appendChild(createLiResults(results[iterRes], iterRes));
                 }
-
             }
         }
     };
-
     request.send();
 }
 
@@ -110,7 +106,6 @@ function submitForm(evt){
 function goBack(){
     var listSongs = document.getElementById("listSongs"),
         singleSong = document.getElementById("singleSong");
-
     listSongs.style.display = "block";
     singleSong.style.display = "none";
 }
