@@ -13,16 +13,47 @@ var uriItunes = "https://itunes.apple.com/search?term=",
 function selectListElement(element){
     var listSongs = document.getElementById("listSongs"),
         singleSong = document.getElementById("singleSong"),
-        listProperties = document.getElementById('listProperties');
+        divProperties = document.getElementById('divProperties'),
+        titlePage = document.getElementById("titlePage"),
+        artworkUrl100 = document.createElement('img'),
+        artistViewUrl = document.createElement('a'),
+        collectionViewUrl = document.createElement('a'),
+        trackViewUrl = document.createElement('a'),
+        video = document.createElement('video'),
+        previewUrl = document.createElement('source');
+
+    while (divProperties.hasChildNodes()) {
+        divProperties.removeChild(divProperties.firstChild);
+    }
 
     listSongs.style.display = "none";
     singleSong.style.display = "block";
 
-    for (var property in results[element]) {
-        var liProperty = document.createElement('li');
-        liProperty.innerHTML = property + '=' + results[element][property];
-        listProperties.appendChild(liProperty);
-    }
+    titlePage.innerHTML = results[element].artistName + " - " + results[element].collectionName + " - " + results[element].trackName;
+
+    artworkUrl100.src = results[element].artworkUrl100;
+    divProperties.appendChild(artworkUrl100);
+
+    artistViewUrl.setAttribute("class", "btn");
+    artistViewUrl.innerHTML = "View Artist";
+    artistViewUrl.href = results[element].artistViewUrl;
+    divProperties.appendChild(artistViewUrl);
+
+    collectionViewUrl.setAttribute("class", "btn");
+    collectionViewUrl.innerHTML = "View Collection";
+    collectionViewUrl.href = results[element].collectionViewUrl;
+    divProperties.appendChild(collectionViewUrl);
+
+    trackViewUrl.setAttribute("class", "btn");
+    trackViewUrl.innerHTML = "View Track";
+    trackViewUrl.href = results[element].trackViewUrl;
+    divProperties.appendChild(trackViewUrl);
+
+    previewUrl.src = results[element].previewUrl;
+    previewUrl.type = "video/mp4";
+    video.setAttribute("controls", true);
+    video.appendChild(previewUrl);
+    divProperties.appendChild(video);
 }
 
 ////////////////////////////////////

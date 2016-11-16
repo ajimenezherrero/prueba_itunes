@@ -61,3 +61,20 @@ footer {
 #singleSong {
   display: none;
 }
+
+#divProperties {
+  width: 500px;
+}
+
+#divProperties img {
+  float: left;
+}
+
+#divProperties .btn {
+  font: bold 18px Helvetica, Verdana, sans-serif;
+  text-decoration: none;
+  background-color: #2196F3;
+  color: #212121;
+  padding: 2px 6px 2px 6px;
+  border: 1px solid #1976D2;
+}
