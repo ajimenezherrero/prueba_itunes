@@ -29,3 +29,32 @@ footer{
   -webkit-flex: 1 100%;
   flex: 1 100%;
 }
+
+#listSongs {
+  list-style-type: none;
+  width: 500px;
+  li:hover {
+    background: $light-primary-color;
+    cursor: pointer;
+  }
+  li {
+    padding: 10px;
+    overflow: auto;
+    h3{
+      font: bold 20px/1.5 Helvetica, Verdana, sans-serif;
+      color: $primary-text-color;
+    }
+    h4{
+      color: $secondary-text-color;
+      margin: 5px 0 5px 0;
+    }
+    img{
+      float: left;
+      margin: 0 15px 0 0;
+    }
+  }
+}
+
+#singleSong{
+  display: none;
+}

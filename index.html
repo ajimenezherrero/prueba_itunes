@@ -13,12 +13,20 @@
         </header>
         <nav>
             <form id="searchForm">
-                <input id="searchText" type="text" name="searchText" placeholder="Search.." value="Michael Jackson">
+                <input id="searchText" type="text" name="searchText" placeholder="Search..">
                 <input type="submit" onclick="submitForm(event)">
             </form>
         </nav>
-        <section></section>
-        <footer></footer>
+        <section>
+            <h2 id="titlePage"></h2>
+            <ul id="listSongs"></ul>
+            <div id="singleSong">
+                <div>
+                    <button onclick="goBack()">GO BACK</button>
+                </div>
+                <ul id="listProperties"></ul>
+            </div>
+        </section>
     </div>
 </body>
 </html>

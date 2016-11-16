@@ -27,3 +27,37 @@ footer {
   -webkit-flex: 1 100%;
   flex: 1 100%;
 }
+
+#listSongs {
+  list-style-type: none;
+  width: 500px;
+}
+
+#listSongs li:hover {
+  background: #BBDEFB;
+  cursor: pointer;
+}
+
+#listSongs li {
+  padding: 10px;
+  overflow: auto;
+}
+
+#listSongs li h3 {
+  font: bold 20px/1.5 Helvetica, Verdana, sans-serif;
+  color: #212121;
+}
+
+#listSongs li h4 {
+  color: #757575;
+  margin: 5px 0 5px 0;
+}
+
+#listSongs li img {
+  float: left;
+  margin: 0 15px 0 0;
+}
+
+#singleSong {
+  display: none;
+}
